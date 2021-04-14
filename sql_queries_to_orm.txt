@@ -1,0 +1,23 @@
+(venv) C:\Users\Perdorues\Desktop\sql_queries\sql_queries_prj>python manage.py shell
+Python 3.9.2 (tags/v3.9.2:1a79785, Feb 19 2021, 13:44:55) [MSC v.1928 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+(InteractiveConsole)
+>>> from sql_queries_app.models import *
+>>> Wizard.objects.create(name="Harry Potter", house="Gryffindor", pet="Hedwig", year="5")
+<Wizard: Wizard object (1)>
+>>> Wizard.objects.create(name="Hermione Granger", house="Gryffindor", pet="Crookshanks", year="5")
+<Wizard: Wizard object (2)>
+>>> Wizard.objects.filter(id=1)
+<QuerySet [<Wizard: Wizard object (1)>]>
+>>> Wizard.objects.get(id=1)
+<Wizard: Wizard object (1)>
+>>> print(Wizard.objects.name)
+objects
+>>> Wizard.objects.filter(house="Gryffindor")
+<QuerySet [<Wizard: Wizard object (1)>, <Wizard: Wizard object (2)>]>
+>>> gryffindors = Wizard.objects.filter(house="Gryffindor")
+>>> wizard_update = Wizard.objects.get(id=1)
+>>> wizard_update.year=6
+>>> wizard_update.save()
+>>> Wizard.objects.all()
+<QuerySet [<Wizard: Wizard object (1)>, <Wizard: Wizard object (2)>]>
